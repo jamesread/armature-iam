@@ -22,9 +22,9 @@ const (
 )
 
 type EffectiveRBAC struct {
-	IsSuperuser bool
 	Permissions map[string]bool
 	RoleNames   []string
+	IsSuperuser bool
 }
 
 func (e *EffectiveRBAC) Has(p string) bool {

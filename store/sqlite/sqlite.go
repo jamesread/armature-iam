@@ -27,7 +27,7 @@ func OpenMemory() (*SQLite, error) {
 		return nil, err
 	}
 	db.SetMaxOpenConns(1)
-	if err := ApplySchema(db); err != nil {
+	if err := ApplySchema(context.Background(), db); err != nil {
 		_ = db.Close()
 		return nil, err
 	}
@@ -47,13 +47,13 @@ func (s *SQLite) Ping(ctx context.Context) error {
 }
 
 // ApplySchema executes the Up section of the embedded IAM migration.
-func ApplySchema(db *sql.DB) error {
+func ApplySchema(ctx context.Context, db *sql.DB) error {
 	raw, err := migratefs.FS.ReadFile("3.iam.sql")
 	if err != nil {
 		return err
 	}
 	up := upSection(string(raw))
-	_, err = db.Exec(up)
+	_, err = db.ExecContext(ctx, up)
 	return err
 }
 

@@ -18,22 +18,22 @@ const providerJWT = "jwt"
 const providerCallbackBearer = "callback-bearer"
 
 type Config struct {
-	CookieName           string
-	AuthYAML             map[string]any
 	Logger               *logrus.Logger
-	AllowUnauthenticated []string
+	AuthYAML             map[string]any
 	RequiredPermission   func(procedure string) string
-	DevDisableAuth       bool
+	CookieName           string
 	APIKeyPrefix         string
+	AllowUnauthenticated []string
+	DevDisableAuth       bool
 	SecureCookies        bool
 }
 
 type Layer struct {
-	Store     store.Store
-	cfg       Config
-	shim      *japauth.AuthShimContext
-	allow     map[string]bool
-	log       *logrus.Logger
+	Store store.Store
+	shim  *japauth.AuthShimContext
+	log   *logrus.Logger
+	allow map[string]bool
+	cfg   Config
 }
 
 func New(st store.Store, cfg Config) (*Layer, error) {
@@ -113,7 +113,10 @@ func (l *Layer) tryAPIKey(ctx context.Context, req *http.Request, procedure stri
 		return nil, nil, false
 	}
 	user, readOnly, err := l.Store.GetUserByAPIKey(ctx, token)
-	if err != nil || user == nil {
+	if user == nil {
+		if err != nil {
+			l.log.WithError(err).Debug("GetUserByAPIKey")
+		}
 		return nil, nil, false
 	}
 	out, ferr := l.finishWithRBAC(ctx, &AuthenticatedUser{User: user, ReadOnly: readOnly}, procedure)

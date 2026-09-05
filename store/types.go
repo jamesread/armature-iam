@@ -6,59 +6,59 @@ const (
 )
 
 type UserAccountRow struct {
-	ID           int
 	Username     string
 	PasswordHash string
 	CreatedBy    string
 	CreatedAt    string
 	UpdatedAt    string
+	ID           int
 }
 
 type SessionRow struct {
-	ID                 int
 	SID                string
-	UserAccountID      int
 	ImpersonatorUserID *int
 	CreatedAt          string
 	UpdatedAt          string
+	ID                 int
+	UserAccountID      int
 }
 
 type APIKeyRow struct {
-	ID            int
-	UserAccountID int
 	Name          string
 	KeyValue      string
-	ReadOnly      bool
 	LastUsedAt    string
 	CreatedAt     string
 	UpdatedAt     string
+	ID            int
+	UserAccountID int
+	ReadOnly      bool
 }
 
 type UserGroupRow struct {
-	ID          int
 	Name        string
-	MemberCount int
 	CreatedAt   string
 	UpdatedAt   string
+	ID          int
+	MemberCount int
 }
 
 type RBACPermissionRow struct {
-	ID          int
 	Name        string
 	Description string
+	ID          int
 }
 
 type RBACRoleRow struct {
-	ID            int
 	Name          string
 	Description   string
 	PermissionIDs []int
+	ID            int
 	GroupCount    int
 	UserCount     int
 }
 
 type MyPermissionAuditRow struct {
 	Permission     string
-	Granted        bool
 	GrantingGroups []string
+	Granted        bool
 }
