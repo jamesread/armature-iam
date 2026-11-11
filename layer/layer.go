@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"connectrpc.com/authn"
-	japauth "github.com/jamesread/httpauthshim"
-	"github.com/jamesread/httpauthshim/authpublic"
+	japauth "github.com/jamesread/armature-httpauthshim"
+	"github.com/jamesread/armature-httpauthshim/authpublic"
 	"github.com/sirupsen/logrus"
 
 	"github.com/jamesread/armature-iam/rbac"

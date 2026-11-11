@@ -10,7 +10,7 @@
 
 </div>
 
-armature-iam is the identity *account* layer for jwr SOA apps. [httpauthshim](https://github.com/jamesread/httpauthshim) answers **who is this HTTP request**. This library maps that username onto `user_accounts`, loads group-based RBAC, and wraps Connect RPC / MCP handlers.
+armature-iam is the identity *account* layer for jwr SOA apps. [httpauthshim](https://github.com/jamesread/armature-httpauthshim) answers **who is this HTTP request**. This library maps that username onto `user_accounts`, loads group-based RBAC, and wraps Connect RPC / MCP handlers.
 
 Apps keep their own IAM admin RPCs and protobuf. This module does not ship a Connect service.
 
@@ -51,7 +51,7 @@ Development/httpauthshim
 Development/armature-iam
 ```
 
-`go.mod` has `replace github.com/jamesread/httpauthshim => ../httpauthshim`.
+`go.mod` has `replace github.com/jamesread/armature-httpauthshim => ../httpauthshim`.
 
 ## Development
 
