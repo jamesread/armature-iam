@@ -5,13 +5,13 @@ import (
 	"os"
 	"path/filepath"
 
-	japauth "github.com/jamesread/httpauthshim"
-	"github.com/jamesread/httpauthshim/authpublic"
-	"github.com/jamesread/httpauthshim/providers/hascallback"
-	"github.com/jamesread/httpauthshim/providers/hasjwt"
-	"github.com/jamesread/httpauthshim/providers/hasmtls"
-	"github.com/jamesread/httpauthshim/providers/hastrustedheaders"
-	"github.com/jamesread/httpauthshim/sessions"
+	japauth "github.com/jamesread/armature-httpauthshim"
+	"github.com/jamesread/armature-httpauthshim/authpublic"
+	"github.com/jamesread/armature-httpauthshim/providers/hascallback"
+	"github.com/jamesread/armature-httpauthshim/providers/hasjwt"
+	"github.com/jamesread/armature-httpauthshim/providers/hasmtls"
+	"github.com/jamesread/armature-httpauthshim/providers/hastrustedheaders"
+	"github.com/jamesread/armature-httpauthshim/sessions"
 	"github.com/sirupsen/logrus"
 )
 
